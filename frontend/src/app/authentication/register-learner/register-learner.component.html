@@ -1,0 +1,64 @@
+<div class="main">
+        <div class="container">
+            <div class="form-box">
+                <div class="form-info" >
+                    <div class="text-center">
+                        <h3>Join as a Student</h3>
+                    </div>
+                    <form [formGroup]="LearnerRegisterForm" novalidate (ngSubmit)="register()">
+                        <div class="form-list" 
+                        [ngClass]="{'has-error':LearnerRegisterForm.get('first_name').invalid && (LearnerRegisterForm.get('first_name').dirty || LearnerRegisterForm.get('first_name').touched)}">
+                            <label for='firstName'>First Name</label>
+                            <input type="text" id='firstName' (keypress)="constant.function.alphabetOnly($event)" formControlName="first_name" class="form-control" name='firstName' required />
+                            <div *ngFor="let validation of account_validation_messages.first_name">
+                            <span class="help-block"
+                                *ngIf="LearnerRegisterForm.get('first_name').hasError(validation.type) && (LearnerRegisterForm.get('first_name').dirty || LearnerRegisterForm.get('first_name').touched)">{{validation.message}}
+                              </span>
+                              </div>
+                        </div>
+
+                        <div class="form-list"
+                        [ngClass]="{'has-error':LearnerRegisterForm.get('last_name').invalid && (LearnerRegisterForm.get('last_name').dirty || LearnerRegisterForm.get('last_name').touched)}">
+                            <label for='lastName'>Last Name</label>
+                            <input type="text" id='last_name' (keypress)="constant.function.alphabetOnly($event)" formControlName="last_name" class="form-control" name='last_name' required />
+                            <div *ngFor="let validation of account_validation_messages.last_name">
+                              <span class="help-block"
+                                *ngIf="LearnerRegisterForm.get('last_name').hasError(validation.type) && (LearnerRegisterForm.get('last_name').dirty || LearnerRegisterForm.get('last_name').touched)">{{validation.message}}
+                              </span>
+                            </div>
+                        </div>
+
+                        <div class="form-list"
+                        [ngClass]="{'has-error':LearnerRegisterForm.get('email').invalid && (LearnerRegisterForm.get('email').dirty || LearnerRegisterForm.get('email').touched)}">
+                            <label for='email'>Email</label>
+                            <input type="email" id='email' class="form-control" formControlName="email" name='email' required />
+                            <div *ngFor="let validation of account_validation_messages.email">
+                              <span class="help-block"
+                                *ngIf="LearnerRegisterForm.get('email').hasError(validation.type) && (LearnerRegisterForm.get('email').dirty || LearnerRegisterForm.get('email').touched)">{{validation.message}}
+                              </span>
+                            </div>
+                        </div>
+                        <div class="form-list"
+                        [ngClass]="{'has-error':LearnerRegisterForm.get('password').invalid && (LearnerRegisterForm.get('password').dirty || LearnerRegisterForm.get('password').touched)}">
+                            <label for='password'>Password</label>
+                            <input type="password" id='password' class="form-control" formControlName="password" name='password' required />
+                            <div *ngFor="let validation of account_validation_messages.password">
+                              <span class="help-block"
+                                *ngIf="LearnerRegisterForm.get('password').hasError(validation.type) && (LearnerRegisterForm.get('password').dirty || LearnerRegisterForm.get('password').touched)">{{validation.message}}
+                              </span>
+                            </div>
+                        </div>
+                        <div class="form-list">
+                            <input type="submit" class="btn btn-fill mt-4" value='Sign up' />
+                            <span class="text-center d-block pt-3" style="font-size:13px">By signing up, you agree to
+                                our Privacy Policy and Terms of Service</span>
+                        </div>
+                        <div class="formbtm-url">
+                            <p>Already an account? <a routerLink="/login" >Sign in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+ 

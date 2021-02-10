@@ -1,0 +1,147 @@
+   <!-- step first -->
+   <div class="main">
+    <div class="container">
+        <div class="form-box">
+            <div class="form-info">
+                <div class="text-center">
+                    <h3>Complete your Profile</h3>
+                </div>
+                <form [formGroup]="completeProfileForm" novalidate (ngSubmit)="completeProfile()" role="form">
+                    <div class="steps-signup">
+                        <!-- <label>Profile Picture</label> -->
+                        <!-- <span></span> -->
+                    </div>
+                    <div class="profile-upload">
+                        <input type='file' name='uploadPic' id='uploadPic' class="d-none" />
+                        <div class="d-flex align-items-center">
+                            <label for='uploadPic'>
+                                <div class="uploadPic">
+                                    <img src='../assets/images/ic-user.svg' />
+                                </div>
+                            </label>
+                            <label for='uploadPic' class="color-secondary cursor-pointer">
+                                upload picture
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='location'>Country</label>
+                        <select id='location' class="form-control" (change)="getState($event.target.selectedIndex)" formControlName='country'>
+                            <option disabled default value=null></option>
+                            <option *ngFor="let list of countryStateList" [value]="list.name" [selected]="">
+                            {{list.name}}
+                            </option>
+                        </select>
+                        <div *ngFor="let validation of account_validation_messages.country">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('country').hasError(validation.type) && (completeProfileForm.get('country').dirty || completeProfileForm.get('country').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='state'>State</label>
+                        <select id='state' class="form-control" formControlName='state'>
+                            <option disabled default value=null>Select State</option>
+                            <option *ngFor="let listState of states" [value]="listState.name" [selected]="">
+                            {{listState.name}}
+                            </option>
+                        </select>
+                        <div *ngFor="let validation of account_validation_messages.state">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('state').hasError(validation.type) && (completeProfileForm.get('state').dirty || completeProfileForm.get('state').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='study'>What do you want to study? It’s ok if you don’t know yet!</label>
+                        <!-- <select id='study' class="form-control" formControlName='study'>
+                            <option>Technical Sales</option>
+                            <option>Digital Marketing</option>
+                            <option>Web Development</option>
+                            <option>Web Design</option>
+                            <option>Data Science</option>
+                            <option>Data Analytics</option>
+                            <option>Cyber Security</option>
+                            <option>A.I. or Machine Learning</option>
+                            <option>Something Else</option>
+                            <option>I don’t know yet</option>
+                        </select> -->
+                        <ng-multiselect-dropdown
+                        [placeholder]="'select skill'"
+                        [data]="studyArray"
+                        formControlName="study"
+                        [settings]="dropdownSettings"
+                        >
+                        </ng-multiselect-dropdown>
+
+                        <div *ngFor="let validation of account_validation_messages.study">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('study').hasError(validation.type) && (completeProfileForm.get('study').dirty || completeProfileForm.get('study').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label>Have you been accepted into a bootcamp or rapid reskilling program?</label>
+                        <div class="d-flex align-items-center">
+                            <label class="checkbox radio mr-3">
+                                <div>
+                                    <input type="radio" id="yes" (click)="enDsProgram(true)" value="yes" formControlName='program'>
+                                    <span class="checkmark radioCheckmark"></span>
+                                </div>
+                                <div>Yes</div>
+                            </label>
+                            <label class="checkbox radio mr-3">
+                                <input type="radio" id="no" value="no" (click)="enDsProgram(false)" formControlName="program">
+                                <span class="checkmark radioCheckmark"></span>
+                                <div>No</div>
+                            </label>
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.program">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('program').hasError(validation.type) && (completeProfileForm.get('program').dirty || completeProfileForm.get('program').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list"  *ngIf="hideProgram">
+                        <label for='program'>If so, which program?</label>
+                        <input type="text" id='program'class="form-control" formControlName='program_value'>
+                        <div *ngIf="isEnable && completeProfileForm.controls['program_value'].errors" class="error">
+                            <span class="text-danger"
+                                *ngIf="isEnable && completeProfileForm.controls['program_value'].errors.required">
+                                *Program is required.</span>
+                        </div>
+
+                        
+                    </div>
+                    <div class="form-list">
+                        <label for='livingExpensive'>Do you want to explore options to help pay your tuition or
+                            living expenses during your program?</label>
+                            <div class="d-flex align-items-center">
+                                <label class="checkbox radio mr-3">
+                                    <div>
+                                        <input type="radio" id="yes" (click)="enDsExpense(true)" [value]="true" formControlName='living_expenses'>
+                                        <span class="checkmark radioCheckmark"></span>
+                                    </div>
+                                    <div>Yes</div>
+                                </label>
+                                <label class="checkbox radio mr-3">
+                                    <input type="radio" id="no" [value]="false" (click)="enDsExpense(false)" formControlName="living_expenses">
+                                    <span class="checkmark radioCheckmark"></span>
+                                    <div>No</div>
+                                </label>
+                            </div>
+                        <!-- <input type="text"(keypress)="constant.function.numberOnly($event)" class="form-control" formControlName='living_expenses'> -->
+                        <!-- <div *ngFor="let validation of account_validation_messages.living_expenses">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('living_expenses').hasError(validation.type) && (completeProfileForm.get('living_expenses').dirty || completeProfileForm.get('living_expenses').touched)">{{validation.message}}
+                            </span>
+                          </div> -->
+                    </div>
+                    <div class="form-list">
+                        <input type="submit" class="btn btn-fill mt-4" [disabled]="isEnable && !this.completeProfileForm.value.program_value" value='Complete Profile' />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

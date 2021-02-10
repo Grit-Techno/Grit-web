@@ -1,0 +1,56 @@
+<div class='header'>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand hand" routerLink="/"><img src='./assets/images/ic-logo.svg' /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" [ngClass]="status == false ? 'hide' : 'show'" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto align-items-center">
+                    <li class="nav-item active">
+                        <a class="nav-link" (click)="closeCollapse()"  *ngIf="!loggedIn" routerLink="/">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" (click)="closeCollapse()"  *ngIf="loggedIn && notComplete" routerLink="/learner-home">Home</a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="!loggedIn">
+                        <a class="nav-link" (click)="closeCollapse()"  routerLink="/about">About</a>
+                    </li>
+                    <li class="nav-item" *ngIf="!loggedIn">
+                        <a class="nav-link" (click)="closeCollapse()" routerLink="/contactus">Contact Us</a>
+                    </li>
+                    <!-- <li class="nav-item" *ngIf="!loggedIn">
+                        <a class="nav-link" (click)="closeCollapse()" routerLink="/login">Login</a>
+                    </li> -->
+                    <!-- <li class="nav-item" *ngIf="loggedIn">
+                        <a class="nav-link hand" (click)="logout($event)">Logout</a>
+                    </li> -->
+                    <li class="nav-item" *ngIf="!loggedIn">
+                        <a class="nav-link nav-login btn-border hand" routerLink="/login">Sign In</a>
+                    </li>
+                    <li class="nav-item" *ngIf="loggedIn && notComplete">
+                        <a class="nav-link nav-login btn-border hand" routerLink="/donate-now" >Donate to Grit</a>
+                    </li>
+                    <li class="nav-item" *ngIf="loggedIn && notComplete">
+                        <img class="nav-link notify hand" src='./assets/images/ic-notification.svg'>
+                    </li>
+                    <li class="nav-item" *ngIf="loggedIn">
+                        <div class="dropdown">
+                            <button class="dropdown-toggle headerProfile" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src='./assets/images/person.png'/>
+                            </button>
+                            <div class="dropdown-menu dropdown-head" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item hand" *ngIf="loggedIn && notComplete" routerLink="/edit-profile">Edit Profile</a>
+                                <a class="dropdown-item hand" *ngIf="loggedIn && notComplete" routerLink="/change-password">Change Password</a>
+                                <a class="nav-link hand" (click)="logout($event)">Sign Out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

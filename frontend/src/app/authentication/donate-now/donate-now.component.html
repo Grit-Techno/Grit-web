@@ -1,0 +1,68 @@
+<div class="donate-now">
+    <div class="row m-0 align-items-center">
+        <div class="col-sm-4 col-md-6 donateImg">
+            <!-- <img src='./assets/images/donateNow.jpg'/> -->
+        </div>
+        <div class="my-5 my-sm-0 col-sm-8 col-md-6">
+            <h3 class="head-main">Donate to Grit Now</h3>
+            <span class="d-block">100% of donations support the equipment costs of a student attending a technical bootcamp 
+                and are managed through OHUB Foundation, our partner 501(c)3.</span>
+            <!-- <form [formGroup]="donateToGritForm" novalidate (ngSubmit)="donateNow()"> -->
+                <div class="form-list row mt-4">
+                    <label class="checkbox donation-price col">
+                        <div>
+                            <input type="checkbox" [checked]="currentlyChecked === checkBoxType.ten" (click)="selectAmount(checkBoxType.ten, 10)" name='price'/>
+                            <span class="checkmark">$10</span>
+                        </div>
+                    </label>
+                    <label class="checkbox donation-price col">
+                        <div>
+                            <input type="checkbox" [checked]="currentlyChecked === checkBoxType.fifty" (click)="selectAmount(checkBoxType.fifty, 50)" name='price'/>
+                            <span class="checkmark">$50</span>
+                        </div>
+                    </label>
+                    <label class="checkbox donation-price col">
+                        <div>
+                            <input type="checkbox" [checked]="currentlyChecked === checkBoxType.hun" (click)="selectAmount(checkBoxType.hun, 100)" name='price'/>
+                            <span class="checkmark">$100</span>
+                        </div>
+                    </label>
+                    <label class="checkbox donation-price col">
+                        <div>
+                            <input type="checkbox" [checked]="currentlyChecked === checkBoxType.twohun" (click)="selectAmount(checkBoxType.twohun, 200)" name='price'/>
+                            <span class="checkmark">$200</span>
+                        </div>
+                    </label>
+                </div>
+                <span class="help-block" *ngIf="amtError">Please select amount to donate.</span>
+
+                <div class="form-list mt-4">
+                    <!-- <label for='other'>Other</label> -->
+                    <!-- <div class="form-list">
+                        <div class="form-list" [ngClass]="{'has-error':donateToGritForm.get('name').invalid && (donateToGritForm.get('name').dirty || donateToGritForm.get('name').touched)}">
+                            <label for='name'>Name</label>
+                            <input type="name" (keypress)="constant.function.alphabetOnly($event)" id='name' formControlName="name" class="form-control" name='name' required />
+                            <div *ngFor="let validation of account_validation_messages.name">
+                              <span class="help-block"
+                                *ngIf="donateToGritForm.get('name').hasError(validation.type) && (donateToGritForm.get('name').dirty || donateToGritForm.get('name').touched)">{{validation.message}}
+                              </span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-list" [ngClass]="{'has-error':donateToGritForm.get('email').invalid && (donateToGritForm.get('email').dirty || donateToGritForm.get('email').touched)}">
+                        <label for='email'>Email</label>
+                        <input type="email" id='email' formControlName="email" class="form-control" name='email' required />
+                        <div *ngFor="let validation of account_validation_messages.email">
+                          <span class="help-block"
+                            *ngIf="donateToGritForm.get('email').hasError(validation.type) && (donateToGritForm.get('email').dirty || donateToGritForm.get('email').touched)">{{validation.message}}
+                          </span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="form-list mt-4">
+                    <input type="submit" class="btn btn-fill mt-4 w-100" (click)="donateNow()" value='Donate to Grit' />
+                </div>
+            <!-- </form> -->
+        </div>
+    </div>
+</div>

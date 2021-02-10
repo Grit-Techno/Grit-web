@@ -1,0 +1,147 @@
+<div class="hero-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style=" font-size: 40px;">Invest in</h1>
+                <h1 style="color: blue; font-size: 40px;">Disruptive Equity</h1>
+                <h1 style="font-size: 40px;">For All</h1>
+                <p><b style="font-weight: revert;">
+                    <!-- Invest In <span style="color: blue;">Disruptional Equity</span>  -->
+                    For culture, by culture invest in </b></p>
+                    <p><b style="font-weight: revert;">the next generation
+                     of high potential </b></p>
+                     <p><b style="font-weight: revert;"> technical talent</b></p><br><br>
+               
+                <p><strong>Sign up to learn more</strong> </p>
+                <a style="background-color:blue" routerLink="/invester" class="btn btn-fill mr-2"><b>Investors</b></a>
+                <a style="background-color:blue" routerLink="/learner" class="btn btn-fill "><b>Students</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="allStars py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="heading-home">
+                    <h3 class="head-main">Do You See Grit?</h3>
+                    <span class="d-block"></span>
+                </div>
+            </div>
+            <div class="col-lg-7">
+            <owl-carousel [options]="carouselOptions" [items]="images" [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                <!-- <div class="col-sm-4"> -->
+                <div class="item" *ngFor="let image of images;let i= index">
+                    <div class="allStars-listing">
+                        <img class="slide-image" src="{{image.image}}" >
+                        <h5>{{image.text}}</h5>
+                        <label>{{image.role}}</label>
+                        <p style="width:80%;height: 25px;"><strong style="float: right;">{{image.percent}}%</strong></p>
+                        <progress max="100" value="80" class="html5">
+                            <div class="progress-bar">
+                                <span style="width: 80%">80%</span>
+                            </div>
+                        </progress>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="price-raised">
+                                <p>Goal:</p>
+                                <span class="price">{{image.Goal}}</span>
+                            </div>
+                            <div class="price-raised">
+                                <p>Raised:</p>
+                                <span class="price">{{image.Raised}}</span>
+                            </div>
+                            <div class="price-raised">
+                                <p>Ro Go:</p>
+                                <span class="price">{{image.RoGo}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </owl-carousel>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="empowerment py-5">
+    <div class="container">
+        <div class="">
+            <h3 class="head-main text-center">This is How Grit Works</h3>
+            <div class="row empowerment-steps">
+                <div class="col-sm-3 hand how-itworks" >
+                    <!-- <h1><b class="bcl">1. We Invest</b></h1> -->
+                    <img src='../../../assets/1.png'>
+                    <b>You invest to cover the bootcamp tuition needs of talented, ambitious students...</b>
+                </div>
+                <div class="col-sm-3 hand how-itworks" >
+                    <!-- <h1> <b class="bcl">2. We Learn</b></h1> -->
+                    <img src='../../../assets/2.png'>
+                    <b>..they attend a top tier technical bootcamp with no upfront costs...</b>
+                </div>
+                <div class="col-sm-3 hand how-itworks">
+                    <!-- <h1><b class="bcl">3. We Hire</b></h1> -->
+                    <img src='../../../assets/3.png'>
+                    <b>...they graduate, get a rewarding job, great benefits and salary boost...</b>
+                </div>
+                <div class="col-sm-3 hand how-itworks">
+                    <!-- <h1><b class="bcl">4. We Earn</b></h1> -->
+                    <img src='../../../assets/4.png'>
+                    <b>...then we pay you back with interest!</b>
+                </div>
+               
+            </div>
+        </div>
+        <div class="row empowerment-steps">
+            <div class="col-sm-4 hand" routerLink="/invester">
+                <img src='../../../assets/images/ic-investor.svg'>
+                <p>Investor</p>
+                <label>Will you invest in the next tech superstar?</label>
+            </div>
+            <div class="col-sm-4 hand" routerLink="/learner">
+                <img src='../../../assets/images/ic-learner.svg'>
+                <p>Student</p>
+                <label>Are you the next tech superstar?</label>
+            </div>
+            <div class="col-sm-4 hand" routerLink="/donate-now">
+                <img src='../../../assets/images/ic-donate.svg'>
+                <p>Donate</p>
+                <label>Donate to support student living expenses.</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="appComing py-5">
+    <div class="container">
+        <div class="mobileApp">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h3 class="head-main">Mobile App Coming Soon!</h3>
+                    <span class="d-block"> </span>
+                </div>
+                <div class="col-lg-4">
+                    <img src='../../../assets/images/ic-mobile.png' />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="partners py-5">
+    <div class="container">
+        <div class="heading-home">
+            <h3 class="head-main text-center">Partners</h3>
+        </div>
+        <div class="row">
+            <div class="item col-sm-4">
+                <a href="https://opportunityhub.co" target="blank">  <img src='../../../assets/Logos/Ohub Logo.png' class="img-fluid hand"></a>
+            </div>
+            <div class="item col-sm-4">
+                <a href="https://wealthblock.ai" target="blank">  <img src='../../../assets/Logos/wealthblock ai logo_brand.svg' class="img-fluid hand"></a>
+            </div>
+            <div class="item col-sm-4">
+                <a href="https://leif.org" target="blank"> <img src="../../../assets/Logos/Leif_main.png" class="img-fluid hand"> </a>
+            </div>
+        </div>
+    </div>
+</div>

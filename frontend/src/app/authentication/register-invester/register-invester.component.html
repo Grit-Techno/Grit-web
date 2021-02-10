@@ -1,0 +1,95 @@
+<div class="main">
+  <div class="container">
+    <div class="form-box">
+      <div class="form-info">
+        <div class="text-center">
+          <h3>Sign up as an Investor</h3>
+        </div>
+        <form [formGroup]="RegisterForm" novalidate (ngSubmit)="register()">
+          <div class="steps-signup mb-3">
+            <h5>Join Our Waitlist</h5>
+            <span>We’ll let you know as soon as we open up our platform to additional investors!</span>
+          </div>
+          <div class="form-list">
+            <div class="form-list"
+              [ngClass]="{'has-error':RegisterForm.get('first_name').invalid && (RegisterForm.get('first_name').dirty || RegisterForm.get('first_name').touched)}">
+              <label for='first_name'>First name</label>
+              <input type="first_name" (keypress)="constant.function.alphabetOnly($event)" id='first_name'
+                formControlName="first_name" class="form-control" name='first_name' required />
+              <div *ngFor="let validation of account_validation_messages.first_name">
+                <span class="help-block"
+                  *ngIf="RegisterForm.get('first_name').hasError(validation.type) && (RegisterForm.get('first_name').dirty || RegisterForm.get('first_name').touched)">{{validation.message}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-list"
+            [ngClass]="{'has-error':RegisterForm.get('last_name').invalid && (RegisterForm.get('last_name').dirty || RegisterForm.get('last_name').touched)}">
+            <label for='last_name'>Last name</label>
+            <input type="last_name" id='first_name' (keypress)="constant.function.alphabetOnly($event)"
+              formControlName="last_name" class="form-control" name='last_name' required />
+            <div *ngFor="let validation of account_validation_messages.last_name">
+              <span class="help-block"
+                *ngIf="RegisterForm.get('last_name').hasError(validation.type) && (RegisterForm.get('last_name').dirty || RegisterForm.get('last_name').touched)">{{validation.message}}
+              </span>
+            </div>
+          </div>
+          <div class="form-list"
+            [ngClass]="{'has-error':RegisterForm.get('email').invalid && (RegisterForm.get('email').dirty || RegisterForm.get('email').touched)}">
+            <label for='email'>Email</label>
+            <input type="email" id='email' formControlName="email" class="form-control" name='email' required />
+            <div *ngFor="let validation of account_validation_messages.email">
+              <span class="help-block"
+                *ngIf="RegisterForm.get('email').hasError(validation.type) && (RegisterForm.get('email').dirty || RegisterForm.get('email').touched)">{{validation.message}}
+              </span>
+            </div>
+          </div>
+          <!-- <div class="form-list" [ngClass]="{'has-error':RegisterForm.get('password').invalid && (RegisterForm.get('password').dirty || RegisterForm.get('password').touched)}">
+                        <label for='password'>Password</label>
+                        <input type="password" id='password' formControlName="password" class="form-control" name='password' required />
+                        <div *ngFor="let validation of account_validation_messages.password">
+                          <span class="help-block"
+                            *ngIf="RegisterForm.get('password').hasError(validation.type) && (RegisterForm.get('password').dirty || RegisterForm.get('password').touched)">{{validation.message}}
+                          </span>
+                        </div>
+                    </div> -->
+          <div class="form-list">
+            <input type="submit" class="btn btn-fill mt-4" value='Sign up' />
+            <span class="text-center d-block pt-3" style="font-size:13px">By signing up, you agree to our Privacy Policy
+              and Terms of Service</span>
+          </div>
+          <div class="formbtm-url">
+            <p>Already an account? <a routerLink="/login">Sign in</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Bootstrap modal -->
+<!-- <div class="Rectangle">
+<div class="modal fade" id="openModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            ×
+          </span>
+        </button>
+      </div>
+      <div class="modal-body" style="">
+        <img class="ic_welcome" src="../../../assets/welcome.png" />
+      </div>
+      <div>
+        <span class="Thank-you">Thank you!</span>
+      </div>
+      <div class="modal-footer  ">
+      <span class="Thank-you-for-signin">Thank you for signing up.Welcome to the Grit Community!</span>
+     </div>
+    </div>
+  </div>
+</div>
+</div> -->

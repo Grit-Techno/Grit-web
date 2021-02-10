@@ -1,0 +1,12 @@
+.donateImg{
+    background-image: url(/assets/images/donateNow.jpg);
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+}
+@media only screen and (max-width: 600px) {
+    .donateImg{
+        background-image: unset;
+        height: auto;
+    }
+}

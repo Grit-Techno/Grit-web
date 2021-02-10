@@ -1,0 +1,165 @@
+<div class="main">
+    <div class="container">
+        <div class="form-box">
+            <div class="form-info">
+                <div class="text-center">
+                    <h3>Edit Profile</h3>
+                </div>
+                <form [formGroup]="updateProfileForm" novalidate (ngSubmit)="updateProfile()" role="form">
+                    <div class="steps-signup">
+                        <!-- <span></span> -->
+                    </div>
+                    <div class="profile-upload">
+                        <input type='file' (click)="uploadProfilePic($event)" id="uploadPic" formControlName="profilePic" class="d-none hand">
+                        <div class="d-flex align-items-center">
+                            <label for='uploadPic'>
+                                <div class="uploadPic">
+                                    <img src='../assets/images/ic-user.svg' />
+                                </div>
+                            </label>
+                            <label for='uploadPic' class="color-secondary cursor-pointer hand">Change picture</label>
+                        </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='firstName'>First name</label>
+                        <input type="text" id='firstName' class="form-control" formControlName='first_name' />
+                        <div *ngFor="let validation of account_validation_messages.first_name">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('first_name').hasError(validation.type) && (updateProfileForm.get('first_name').dirty || updateProfileForm.get('first_name').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='lastName'>Last Name</label>
+                        <input type="text" id='lastName' class="form-control" formControlName="last_name"/>
+                        <div *ngFor="let validation of account_validation_messages.last_name">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('last_name').hasError(validation.type) && (updateProfileForm.get('last_name').dirty || updateProfileForm.get('last_name').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='email'>Email</label>
+                        <input type="email" id='email' class="form-control" disabled formControlName='email'>
+                    </div>
+                    <div class="form-list">
+                        <label>Country</label>
+                        <select class="form-control" (change)="getState($event.target.selectedIndex)" formControlName='country'>
+                            <option disabled default value=null></option>
+                            <option *ngFor="let list of countryList" [value]="list.name" [selected]="">
+                            {{list.name}}
+                            </option>
+                        </select>
+                        <div *ngFor="let validation of account_validation_messages.country">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('country').hasError(validation.type) && (updateProfileForm.get('country').dirty || updateProfileForm.get('country').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label >State</label>
+                        <select id='state' class="form-control" formControlName='state'>
+                            <option disabled default value=null>Select State</option>
+                            <option *ngFor="let listState of states" [value]="listState.name" [selected]="">
+                            {{listState.name}}
+                            </option>
+                        </select>
+                        <div *ngFor="let validation of account_validation_messages.state">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('state').hasError(validation.type) && (updateProfileForm.get('state').dirty || updateProfileForm.get('state').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label for='skill'>What do you want to skill? It’s ok if you don’t know yet!</label>
+                        <ng-multiselect-dropdown
+                        [placeholder]="'select skill'"
+                        [data]="skillArray"
+                        formControlName="skill"
+                        [settings]="dropdownSettings"
+                        >
+                        </ng-multiselect-dropdown>
+             
+
+                        <div *ngFor="let validation of account_validation_messages.skill">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('skill').hasError(validation.type) && (updateProfileForm.get('skill').dirty || updateProfileForm.get('skill').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list">
+                        <label>Have you been accepted into a bootcamp or rapid reskilling program?</label>
+                        <div class="d-flex align-items-center">
+                            <label class="checkbox radio mr-3">
+                                <div>
+                                    <input type="radio" id="yes" (click)="enDsProgram(true)" value="yes" formControlName='program'>
+                                    <span class="checkmark radioCheckmark"></span>
+                                </div>
+                                <div>Yes</div>
+                            </label>
+                            <label class="checkbox radio mr-3">
+                                <input type="radio" id="no" value="no" (click)="enDsProgram(false)" formControlName="program">
+                                <span class="checkmark radioCheckmark"></span>
+                                <div>No</div>
+                            </label>
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.program">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('program').hasError(validation.type) && (updateProfileForm.get('program').dirty || updateProfileForm.get('program').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-list"  *ngIf="hideProgram">
+                        <label for='program'>If so, which program?</label>
+                        <input type="text" id='program'class="form-control" formControlName='program_value'>
+                        <div *ngIf="isEnable && updateProfileForm.controls['program_value'].errors" class="error">
+                            <span class="text-danger"
+                                *ngIf="isEnable && updateProfileForm.controls['program_value'].errors.required">
+                                *Program is required.</span>
+                        </div>
+
+                        
+                    </div>
+                    <!-- <div class="form-list">
+                        <label for='livingExpensive'>Do you want to explore options to help pay your tuition or
+                            living expenses during your program?</label>
+                        <input type="text" class="form-control" formControlName='living_expenses'>
+                        <div *ngFor="let validation of account_validation_messages.living_expenses">
+                            <span class="help-block"
+                              *ngIf="updateProfileForm.get('living_expenses').hasError(validation.type) && (updateProfileForm.get('living_expenses').dirty || updateProfileForm.get('living_expenses').touched)">{{validation.message}}
+                            </span>
+                          </div>
+                    </div> -->
+                    <div class="form-list">
+                        <label for='livingExpensive'>Do you want to explore options to help pay your tuition or
+                            living expenses during your program?</label>
+                            <div class="d-flex align-items-center">
+                                <label class="checkbox radio mr-3">
+                                    <div>
+                                        <input type="radio" id="yes" (click)="enDsExpense(true)" [value]="true" formControlName='living_expenses'>
+                                        <span class="checkmark radioCheckmark"></span>
+                                    </div>
+                                    <div>Yes</div>
+                                </label>
+                                <label class="checkbox radio mr-3">
+                                    <input type="radio" id="no" [value]="false" (click)="enDsExpense(false)" formControlName="living_expenses">
+                                    <span class="checkmark radioCheckmark"></span>
+                                    <div>No</div>
+                                </label>
+                            </div>
+                        <!-- <input type="text"(keypress)="constant.function.numberOnly($event)" class="form-control" formControlName='living_expenses'> -->
+                        <!-- <div *ngFor="let validation of account_validation_messages.living_expenses">
+                            <span class="help-block"
+                              *ngIf="completeProfileForm.get('living_expenses').hasError(validation.type) && (completeProfileForm.get('living_expenses').dirty || completeProfileForm.get('living_expenses').touched)">{{validation.message}}
+                            </span>
+                          </div> -->
+                    </div>
+                    
+                    <div class="form-list">
+                        <input type="submit" class="btn btn-fill mt-4" [disabled]="isEnable && !this.updateProfileForm.value.program_value" value='Update Profile' />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

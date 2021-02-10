@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800&display=swap');
+
+.choose-map{transition:all .3s;border:1px solid #FFA200; color: #FFA200; padding: 0.4375rem; border-radius: 5px;}
+.choose-map:hover{color: #fff; background-color: #FFA200; text-decoration: none;}
+.registerBlock .loginInner{padding-top:0.5rem;}
+.custom-control{padding-left: 0;}
+.example-tab-icon { margin-right: 12px;}
+.phone-text .c-code{width: 120px; margin-right: 5px;}
+

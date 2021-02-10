@@ -1,0 +1,48 @@
+.profile-container .profile-pic{position: relative;  flex-basis: 33%; background:url(/assets/profile-bg.png) no-repeat left; background-size: cover;}
+.profile-container .profile-pic .image{width: 6.625rem; height: 6.625rem; border-radius: 50%; border:4px solid #fff; overflow: hidden;}
+.profile-container .profile-pic .image img{width: 100%; height: 100%; object-fit: cover;}
+.profile-container .profile-pic h4{color: #fff; font-size: 1.375rem; text-transform: capitalize; font-weight: 600; margin-top: 1rem;}
+.profile-container .profile-pic .edit{position: absolute; height: 2.0625rem; width: 2.0625rem; line-height: 2.0625rem; text-align: center; right: 1rem; top:1rem; color: #fff; border:1px solid #fff; border-radius: 0.25rem;}
+.profile-container .profile-pic .edit:hover{background: #202020;}
+.profile-container .profile-details{flex-basis: 67%;}
+.profile-container .table{margin-bottom: 0;}
+.info-header{padding: 0.625rem 0.625rem 0.625rem 1rem; border-top: 1px solid #EBEBEB; border-right: 1px solid #EBEBEB;}
+.info-header h5{margin: 0; font-size: 1rem; font-weight:500; }
+.info-list tr td{font-size: 0.875rem;}
+.info-list tr td:last-child{font-weight: 600 !important;}
+.info-list tr td:last-child img{margin-right: 5px;}
+.icons-container{margin-top: 5.5rem;}
+.icon-block{position: relative; border-radius: 0.25rem; margin-bottom: 4.2rem; border:1px solid #EBEBEB; padding-top:3.75rem;}
+.icon-block .icon{position: absolute; width: 5.8125rem; text-align: center; line-height: 5.8125rem; border-radius: 50%; height: 5.8125rem; left:50%; top:-47px; transform: translate(-50%, 0);
+    color: #fff;
+    font-size: 2.3125rem;
+    background: #ffa200;
+    background: -moz-linear-gradient(top, #ffa200 0%, #ff6f00 100%);
+    background: -webkit-linear-gradient(top, #ffa200 0%,#ff6f00 100%);
+    background: linear-gradient(to bottom, #ffa200 0%,#ff6f00 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa200', endColorstr='#ff6f00',GradientType=0 )
+}
+.icon-block h3{font-size: 1.875rem; font-weight: 800; color: #53A7FF;}
+.icon-block p{font-size: 1.25rem; text-transform: capitalize;}
+
+
+
+@media (max-width:991px){
+    .info-list tr td{font-size: 0.75rem;}
+
+}
+@media (max-width:767px){
+    .info-list tr td{font-size: 0.75rem;}
+    .profile-container{flex-direction: column;}
+    .profile-container .profile-pic{padding: 1rem;}
+    .icon-block{ padding-top: 2.75rem;}
+    .icon-block .icon{width: 4.375rem; height: 4.375rem; font-size: 1.625rem; line-height: 4.375rem; top:-35px;}
+    .icon-block h3{font-size: 1.125rem; }
+.icon-block p{font-size: 0.75rem; }
+.info-header{border-left:1px solid  #EBEBEB;}
+
+
+}
+@media (max-width:420px){
+    .info-header h5{font-size: 0.75rem;}
+}

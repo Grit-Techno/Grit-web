@@ -1,0 +1,58 @@
+  <!-- <div class="main">
+    <div class="container">
+        <div class="form-box">
+            <div class="form-info">
+                <div class="head-dec mb-2 text-center">
+                    <h3>Forgot your<br> Password?</h3>
+                </div>
+                <form [formGroup]="forgotForm" novalidate (ngSubmit)="forgotPassword()">
+                  <div class="form-list" [ngClass]="{'has-error':forgotForm.get('email').invalid && (forgotForm.get('email').dirty || forgotForm.get('email').touched)}">
+                    <label for='email'>Email</label>
+                    <input type="email" id='email' formControlName="email" class="form-control" name='email' required />
+                    <div *ngFor="let validation of account_validation_messages.email">
+                      <span class="help-block"
+                        *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">{{validation.message}}
+                      </span>
+                    </div>
+                </div>
+                    <div class="form-list">
+                        <input type="submit" class="btn btn-fill mt-4" value='Send recovery email'/>
+                    </div>
+                    <span class="text-center d-block">
+                        For security, this link expires in 1 hour. Open it immediately or wait until you're ready to complete the password reset process before requesting a password reset. 
+                    </span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="main">
+  <div class="container">
+      <div class="form-box">
+          <div class="form-info">
+              <div class="head-dec mb-2 text-center">
+                  <h3>Forgot your<br> Password?</h3>
+              </div>
+              <form [formGroup]="forgotForm" novalidate (ngSubmit)="forgotPassword()">
+                  <div class="form-list"  [ngClass]="{'has-error':forgotForm.get('email').invalid && (forgotForm.get('email').dirty || forgotForm.get('email').touched)}">
+                      <label for='email'>Email</label>
+                      <input type="email" id='email'  formControlName="email" class="form-control" name='email' required />
+                      <div *ngFor="let validation of account_validation_messages.email">
+                        <span class="help-block"
+                          *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">{{validation.message}}
+                        </span>
+                      </div>
+                  </div>
+                  <div class="form-list">
+                      <input type="submit" class="btn btn-fill mt-4" value='Send email' />
+                  </div>
+                  <span class="text-center d-block">
+                      For security, this link expires in 1 hour. Open it immediately or wait until you're ready to
+                      complete the password reset process before requesting a password reset.
+                  </span>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
